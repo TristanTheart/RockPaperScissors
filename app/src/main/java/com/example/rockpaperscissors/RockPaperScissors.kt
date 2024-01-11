@@ -1,65 +1,48 @@
 package com.example.rockpaperscissors
 
-fun main(){
+fun main() {
     var computerChoice = ""
-    var playerChoice  = ""
+    var playerChoice = ""
     println("Rock, Paper or Scissors? Enter your choice.")
 
-    var rightInput = false
-    while (!rightInput){
+    var userInputValidate = false
+    while (!userInputValidate) {
         playerChoice = readln().lowercase()
-        when {
-            playerChoice == "rock" -> rightInput = true
-            playerChoice == "paper" -> rightInput = true
-            playerChoice == "scissors" -> rightInput = true
-            else -> println("Please enter a valid choice")
+        when (playerChoice) {
+            "rock" -> userInputValidate = true
+            "paper" -> userInputValidate = true
+            "scissors" -> userInputValidate = true
+            else -> println("Choice is invalid. Please enter rock paper or scissors.")
         }
     }
 
-
     var randomNumber = (1..3).random()
 
-    val rock = 1
-    val paper = 2
-    val scissors = 3
+    when (randomNumber) {
+        1 -> {
+            computerChoice = "rock"
+        }
 
-    if (randomNumber == 1){
-        computerChoice = "rock"
-    } else if (randomNumber == 2){
-        computerChoice = "paper"
-    } else if(randomNumber == 3){
-        computerChoice = "scissors"
+        2 -> {
+            computerChoice = "paper"
+        }
+
+        3 -> {
+            computerChoice = "scissors"
+        }
     }
-    if (playerChoice == "rock" &&computerChoice == "paper"){
-       println(computerChoice)
-        println("You picked $playerChoice and I picked $computerChoice,you lose")
-    }else if(playerChoice == "rock" &&computerChoice == "scissors"){
-        println(computerChoice)
-        println("You picked $playerChoice and I picked $computerChoice, you win!")
-    } else if (playerChoice == "rock" &&computerChoice == "rock"){
-        println(computerChoice)
-        println("We both picked rock, its a draw :(")
+    println(computerChoice)
 
-
-         } else if(playerChoice == "paper" &&computerChoice == "rock"){
-            println(computerChoice)
-            println("You picked $playerChoice and I picked $computerChoice, you win!")
-        } else if(playerChoice == "paper" &&computerChoice == "paper"){
-            println(computerChoice)
-            println("We both picked paper, its a draw :(")
-        } else if (playerChoice == "paper" &&computerChoice == "scissors"){
-            println(computerChoice)
-            println("You picked $playerChoice and I picked $computerChoice, you lose")
-
-
-            } else if(playerChoice == "scissors" &&computerChoice == "rock"){
-                println(computerChoice)
-                println("You picked $playerChoice and I picked $computerChoice, you lose")
-            } else if (playerChoice == "scissors" &&computerChoice == "paper"){
-                println(computerChoice)
-                println("You picked $playerChoice and I picked $computerChoice, you win!")
-            } else if (playerChoice == "scissors" &&computerChoice == "scissors"){
-                println(computerChoice)
-                println("we both picked scissors, its a draw")
+    val winner = when {
+        playerChoice == computerChoice -> "Tie"
+        playerChoice == "rock" && computerChoice == "scissors" -> "Player"
+        playerChoice == "paper" && computerChoice == "rock" -> "Player"
+        playerChoice == "scissors" && computerChoice == "paper" -> "Player"
+        else -> "Computer"
+    }
+    if (winner == "Tie") {
+        println("It is a tie")
+    } else {
+        println("$winner won!")
     }
 }
