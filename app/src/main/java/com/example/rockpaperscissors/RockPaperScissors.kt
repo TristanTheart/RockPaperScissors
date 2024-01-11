@@ -9,9 +9,9 @@ fun main() {
     while (!userInputValidate) {
         playerChoice = readln().lowercase()
         when (playerChoice) {
-            "rock" -> userInputValidate = true
-            "paper" -> userInputValidate = true
-            "scissors" -> userInputValidate = true
+            "rock", "paper", "scissors" -> {
+                userInputValidate = true
+            }
             else -> println("Choice is invalid. Please enter rock paper or scissors.")
         }
     }
