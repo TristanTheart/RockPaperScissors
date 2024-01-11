@@ -16,7 +16,7 @@ fun main() {
         }
     }
 
-    var randomNumber = (1..3).random()
+    val randomNumber = (1..3).random()
 
     when (randomNumber) {
         1 -> {
