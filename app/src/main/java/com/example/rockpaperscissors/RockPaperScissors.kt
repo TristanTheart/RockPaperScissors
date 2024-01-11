@@ -4,7 +4,18 @@ fun main(){
     var computerChoice = ""
     var playerChoice  = ""
     println("Rock, Paper or Scissors? Enter your choice.")
-    playerChoice = readln().lowercase()
+
+    var rightInput = false
+    while (!rightInput){
+        playerChoice = readln().lowercase()
+        when {
+            playerChoice == "rock" -> rightInput = true
+            playerChoice == "paper" -> rightInput = true
+            playerChoice == "scissors" -> rightInput = true
+            else -> println("Please enter a valid choice")
+        }
+    }
+
 
     var randomNumber = (1..3).random()
 
